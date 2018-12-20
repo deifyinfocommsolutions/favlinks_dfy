@@ -1,5 +1,5 @@
 #!/bin/bash
-app=yunofav
+app=favlinks
 
 # The parameter $1 is the backup directory location
 # which will be compressed afterward
