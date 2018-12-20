@@ -1,16 +1,21 @@
 #!/bin/bash
 # Installation de Yunofav dans Yunohost
-app=yunofav
+app=favlinks
 
 # Retrieve arguments
 domain=$1
 path=$2
 
 # Check domain/path availability
-sudo yunohost app checkurl $domain$path -a $app
-if [[ ! $? -eq 0 ]]; then
-    exit 1
-fi
+#sudo yunohost app checkurl $domain$path -a $app
+#if [[ ! $? -eq 0 ]]; then
+#    exit 1
+#fi
+
+# Check web path availability
+ynh_webpath_available $domain $path
+# Register (book) web path
+ynh_webpath_register $app $domain $path
 
 # Copy files to the right place with the right permissions
 final_path=/var/www/$app
